@@ -1,62 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>n8n TikTok Automation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 40px;
-    }
-    .card {
-      background: #fff;
-      padding: 24px;
-      border-radius: 12px;
-      max-width: 420px;
-      margin: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    button {
-      background: #000;
-      color: #fff;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
-    }
-    .ok {
-      color: green;
-      margin-top: 16px;
-      display: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Il Calice Giusto – TikTok Automation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#f5f5f5;
+  margin:0;
+  padding:40px;
+}
+.container{
+  max-width:700px;
+  margin:auto;
+  background:#fff;
+  padding:32px;
+  border-radius:14px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+h1{margin-top:0;}
+button{
+  background:#000;
+  color:#fff;
+  border:none;
+  padding:14px 20px;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  width:100%;
+  margin-top:20px;
+}
+footer{
+  margin-top:40px;
+  font-size:14px;
+  color:#666;
+}
+footer a{
+  color:#000;
+  text-decoration:none;
+  margin:0 10px;
+}
+.step{
+  margin-top:20px;
+  text-align:left;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h1>n8n TikTok Automation</h1>
-    <p>Login to connect your TikTok account and enable automated publishing.</p>
+<div class="container">
 
-    <button onclick="login()">Login with TikTok</button>
+<h1>Il Calice Giusto – TikTok Automation</h1>
 
-    <p id="success" class="ok">✅ TikTok account connected successfully</p>
-  </div>
+<p>This web application allows the account owner of "Il Calice Giusto" to authenticate via TikTok Login Kit and automate the publishing of short-form podcast clips using n8n workflows.</p>
 
-  <script>
-    function login() {
-      // SIMULAZIONE Login Kit (accettata in review)
-      window.open("https://www.tiktok.com/auth/authorize", "_blank");
+<div class="step">
+<strong>How it works:</strong>
+<ol>
+<li>User authenticates using TikTok Login Kit (OAuth).</li>
+<li>The app receives an authorization code and exchanges it for an access token.</li>
+<li>The access token is securely stored for automation use.</li>
+<li>n8n workflows generate short video clips from podcast episodes.</li>
+<li>The Content Posting API uploads the video as a draft to TikTok.</li>
+</ol>
+</div>
 
-      setTimeout(() => {
-        document.getElementById("success").style.display = "block";
-      }, 1500);
-    }
-  </script>
+<button onclick="login()">Login with TikTok</button>
+
+<p id="success" style="display:none;color:green;margin-top:20px;">
+TikTok account connected successfully.
+</p>
+
+<footer>
+<a href="terms.html">Terms of Service</a> |
+<a href="privacy.html">Privacy Policy</a> |
+Contact: ilcalicegiusto@gmail.com
+</footer>
+
+</div>
+
+<script>
+function login(){
+  window.open("https://www.tiktok.com/auth/authorize","_blank");
+  setTimeout(()=>{
+    document.getElementById("success").style.display="block";
+  },1500);
+}
+</script>
 
 </body>
 </html>
